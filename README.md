@@ -39,7 +39,7 @@ pip install opencv-python pytesseract pandas openpyxl
 ```
 </br>
 Tessaract needs to be installed from https://github.com/tesseract-ocr/tesseract. </br>
-<u> </u>You can put a file path to it in the script, or you can add it to the environment variables and ommit that line </u>
+<u> </u>You can put a file path to it in the script, or you can add it to the environment variables and omit that line </u>
 
 ## Project stucture
 project </br>

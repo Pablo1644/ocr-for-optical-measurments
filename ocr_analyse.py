@@ -12,7 +12,6 @@ BASE_DIR=os.path.dirname(os.path.abspath(__file__))
 FILES_PATH=os.path.join(BASE_DIR,NAME_DIR)
 CONFIG = r'--psm 11 --oem 3 -c tessedit_char_whitelist=0123456789,.  -c classify_bln_numeric_mode=1'
 sys.stdout.reconfigure(encoding="utf-8")
-pytesseract.pytesseract.tesseract_cmd=r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 list_of_optical_measurements=[]
 
 
@@ -36,7 +35,6 @@ files=sorted(
 )
 
 
-
 for file in files:
     path=os.path.join(FILES_PATH,file)
     img=preprocess_image(path)
@@ -54,18 +52,15 @@ data.columns=range(1,data.shape[1]+1)
 output_path=os.path.join(BASE_DIR,"results.xlsx")
 data.to_excel(output_path)
 
-
 wb=load_workbook(output_path)
 ws=wb.active
 
-max_value=float(pd.to_numeric(data.stack(),errors="coerce").max())
-min_value=float(pd.to_numeric(data.stack(),errors="coerce").min())
+max_value=pd.to_numeric(data.stack(),errors="coerce").max()
+min_value=pd.to_numeric(data.stack(),errors="coerce").min()
 
 
 red_fill=PatternFill(start_color="FF0000",end_color="FF0000",fill_type="solid")
 yellow_fill=PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
-
-
 thin=Side(style="thin")
 border=Border(left=thin,right=thin,top=thin,bottom=thin)
 
@@ -73,17 +68,16 @@ for row in ws.iter_rows(min_row=2,min_col=2,max_col=data.shape[1]+1):
     for cell in row:
         cell.border=border
         try:
-            value=float(cell.value)
+            value=cell.value
             if value==max_value:
                 cell.fill=red_fill
             if value==min_value:
                 cell.fill=yellow_fill
         except:
             pass
-
 wb.save(output_path)
 
-result = max_value / min_value
+result = float( max_value / min_value) 
 if result<2:
     print("TEST RESULT: Positive")
 else:

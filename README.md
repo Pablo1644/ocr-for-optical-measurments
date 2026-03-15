@@ -33,9 +33,10 @@ Required Python libraries:
 - tessaract (needs to be installed from https://github.com/tesseract-ocr/tesseract)
 
 ## Instalation
-'''
+
+bash ```
 pip install opencv-python pytesseract pandas openpyxl
-'''
+```
 
 ## Project stucture
 project/

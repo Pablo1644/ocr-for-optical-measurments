@@ -34,7 +34,7 @@ Required Python libraries:
 
 ## Instalation
 
-bash ```
+```
 pip install opencv-python pytesseract pandas openpyxl
 ```
 

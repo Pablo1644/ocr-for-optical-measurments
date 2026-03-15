@@ -32,7 +32,7 @@ Required Python libraries:
  -openpyxl 
 - tessaract 
 
-## Instalation
+## Installation
 To install proper libraries type:
 ```
 pip install opencv-python pytesseract pandas openpyxl
@@ -42,7 +42,7 @@ Tessaract needs to be installed from https://github.com/tesseract-ocr/tesseract.
 <u> </u>You can put a file path to it in the script, or you can add it to the environment variables and ommit that line </u>
 
 ## Project stucture
-project/
+project </br>
 │ </br>
 ├── ocr_analyse.py </br>
 ├── pliki/ </br>

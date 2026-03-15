@@ -26,10 +26,10 @@ The program:
 Python 3.9+
 
 Required Python libraries:
- -opencv-python
- -pytesseract
- -pandas
- -openpyxl 
+- opencv-python
+- pytesseract
+- pandas
+- openpyxl 
 - tessaract 
 
 ## Installation

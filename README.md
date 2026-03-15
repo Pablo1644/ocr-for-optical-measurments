@@ -30,21 +30,24 @@ Required Python libraries:
  -pytesseract
  -pandas
  -openpyxl 
-- tessaract (needs to be installed from https://github.com/tesseract-ocr/tesseract)
+- tessaract 
 
 ## Instalation
-
+To install proper libraries type:
 ```
 pip install opencv-python pytesseract pandas openpyxl
 ```
+</br>
+Tessaract needs to be installed from https://github.com/tesseract-ocr/tesseract. </br>
+<u> </u>You can put a file path to it in the script, or you can add it to the environment variables and ommit that line </u>
 
 ## Project stucture
 project/
-│
-├── ocr_analyse.py
-├── pliki/
-│   ├── 1.bmp
-│   ├── 2.bmp
-│   └── ...
-│
+│ </br>
+├── ocr_analyse.py </br>
+├── pliki/ </br>
+│   ├── 1.bmp </br>
+│   ├── 2.bmp </br>
+│   └── ... </br>
+│ </br>
 └── results.xlsx

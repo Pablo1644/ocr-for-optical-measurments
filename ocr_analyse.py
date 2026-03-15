@@ -10,7 +10,7 @@ from openpyxl.styles import PatternFill, Border, Side
 NAME_DIR="measurments"
 BASE_DIR=os.path.dirname(os.path.abspath(__file__))
 FILES_PATH=os.path.join(BASE_DIR,NAME_DIR)
-CONFIG = r'--psm 11 --oem 3 -c tessedit_char_whitelist=0123456789,. -c classify_bln_numeric_mode=1'
+CONFIG = r'--psm 11 --oem 3 -c tessedit_char_whitelist=0123456789,.  -c classify_bln_numeric_mode=1'
 sys.stdout.reconfigure(encoding="utf-8")
 pytesseract.pytesseract.tesseract_cmd=r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 list_of_optical_measurements=[]
@@ -26,7 +26,7 @@ def preprocess_image(path):
 def extract_numbers(img):
     text=pytesseract.image_to_string(img,config=CONFIG)
     text=text.replace(",", ".")
-    raw_numbers=re.findall(r"\d+\.\d{3}",text)
+    raw_numbers=list(map(float,(re.findall(r"\d+\.\d{3}",text))))
     return raw_numbers
 
 
@@ -43,8 +43,6 @@ for file in files:
     numbers=extract_numbers(img)
     if numbers:
         list_of_optical_measurements.append(numbers[:10])
-
-print(list_of_optical_measurements)
 if not list_of_optical_measurements:
     print("OCR nie znalazł danych")
     exit()
